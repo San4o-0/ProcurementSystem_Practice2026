@@ -1,0 +1,228 @@
+﻿<Window x:Class="ProcurementSystem.Wpf.Views.CreateUserWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Create User"
+        Width="420"
+        Height="625"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize"
+        Background="#1E1E1E">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <SolidColorBrush x:Key="BackgroundBrush" Color="#1E1E1E"/>
+            <SolidColorBrush x:Key="SurfaceBrush" Color="#2D2D30"/>
+            <SolidColorBrush x:Key="BorderBrush" Color="#3F3F46"/>
+            <SolidColorBrush x:Key="AccentBrush" Color="#0E7490"/>
+            <SolidColorBrush x:Key="AccentHoverBrush" Color="#0891B2"/>
+            <SolidColorBrush x:Key="TextPrimaryBrush" Color="#E4E4E7"/>
+            <SolidColorBrush x:Key="TextSecondaryBrush" Color="#A1A1AA"/>
+            <SolidColorBrush x:Key="InputBrush" Color="#1A1A1A"/>
+            <SolidColorBrush x:Key="ErrorBrush" Color="#FF6B6B"/>
+            <SolidColorBrush x:Key="CancelBrush" Color="#3F3F46"/>
+            <SolidColorBrush x:Key="CancelHoverBrush" Color="#52525B"/>
+
+            <Style x:Key="LabelStyle" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="{StaticResource TextSecondaryBrush}"/>
+                <Setter Property="FontSize" Value="13"/>
+                <Setter Property="FontWeight" Value="Medium"/>
+                <Setter Property="Margin" Value="0,0,0,6"/>
+            </Style>
+
+            <Style x:Key="InputBorderStyle" TargetType="Border">
+                <Setter Property="Background" Value="{StaticResource InputBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="CornerRadius" Value="6"/>
+                <Setter Property="Height" Value="40"/>
+            </Style>
+
+            <Style x:Key="InputTextBoxStyle" TargetType="TextBox">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Padding" Value="14,0"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="CaretBrush" Value="{StaticResource AccentBrush}"/>
+            </Style>
+
+            <Style x:Key="InputPasswordBoxStyle" TargetType="PasswordBox">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Padding" Value="14,0"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="CaretBrush" Value="{StaticResource AccentBrush}"/>
+            </Style>
+
+            <Style x:Key="InputComboBoxStyle" TargetType="ComboBox">
+                <Setter Property="Background" Value="{StaticResource InputBrush}"/>
+                <Setter Property="Foreground" Value="Black"/>
+                <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Padding" Value="6,0"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="Height" Value="40"/>
+            </Style>
+
+            <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+                <Setter Property="Background" Value="{StaticResource AccentBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Padding" Value="20,10"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="FontWeight" Value="Medium"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}"
+                                    CornerRadius="6"
+                                    Padding="{TemplateBinding Padding}">
+                                <ContentPresenter HorizontalAlignment="Center" 
+                                                  VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="{StaticResource AccentHoverBrush}"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="SecondaryButtonStyle" TargetType="Button">
+                <Setter Property="Background" Value="{StaticResource CancelBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Padding" Value="20,10"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="FontWeight" Value="Medium"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}"
+                                    CornerRadius="6"
+                                    Padding="{TemplateBinding Padding}">
+                                <ContentPresenter HorizontalAlignment="Center" 
+                                                  VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="{StaticResource CancelHoverBrush}"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Border Background="{StaticResource SurfaceBrush}"
+            BorderBrush="{StaticResource BorderBrush}"
+            BorderThickness="1"
+            CornerRadius="10"
+            Margin="20,20,20,9">
+        <Grid Margin="32">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" MinHeight="33.29"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="0*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0"
+                    Width="56"
+                    Background="{StaticResource AccentBrush}"
+                    CornerRadius="12"
+                    Margin="0,0,0,16"
+                    HorizontalAlignment="Center">
+                <Viewbox Width="32" Height="32">
+                    <Canvas Width="24" Height="24">
+                        <Path Data="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" 
+                              Fill="White"/>
+                    </Canvas>
+                </Viewbox>
+            </Border>
+
+            <TextBlock Text="Створити користувача"
+                       FontSize="22"
+                       FontWeight="SemiBold"
+                       Foreground="{StaticResource TextPrimaryBrush}"
+                       HorizontalAlignment="Center"
+                       Margin="0,0,0,6"
+                       Grid.Row="1" Width="235"/>
+
+            <TextBlock Text="Додайте нового користувача системи"
+                       FontSize="13"
+                       Foreground="{StaticResource TextSecondaryBrush}"
+                       HorizontalAlignment="Center"
+                       Margin="0,35,0,4"
+                       Grid.Row="1" Width="228"/>
+
+            <StackPanel Grid.Row="2" Margin="0,20,0,16" Grid.RowSpan="2">
+                <TextBlock Text="Повне ім'я" Style="{StaticResource LabelStyle}"/>
+                <Border Style="{StaticResource InputBorderStyle}">
+                    <TextBox x:Name="FullNameBox" Style="{StaticResource InputTextBoxStyle}"/>
+                </Border>
+            </StackPanel>
+
+            <StackPanel Grid.Row="4" Margin="0,0,0,16">
+                <TextBlock Text="Логін" Style="{StaticResource LabelStyle}"/>
+                <Border Style="{StaticResource InputBorderStyle}">
+                    <TextBox x:Name="LoginBox" Style="{StaticResource InputTextBoxStyle}"/>
+                </Border>
+            </StackPanel>
+
+            <StackPanel Grid.Row="4" Margin="0,79,0,16" Grid.RowSpan="2">
+                <TextBlock Text="Пароль" Style="{StaticResource LabelStyle}"/>
+                <Border Style="{StaticResource InputBorderStyle}">
+                    <PasswordBox x:Name="PasswordBox" Style="{StaticResource InputPasswordBoxStyle}"/>
+                </Border>
+            </StackPanel>
+
+            <StackPanel Grid.Row="5" Margin="0,35,0,1" Grid.RowSpan="2">
+                <TextBlock Text="Посада" Style="{StaticResource LabelStyle}"/>
+                <ComboBox x:Name="RoleBox"
+                          Style="{StaticResource InputComboBoxStyle}"
+                          DisplayMemberPath="Name"
+                          SelectedValuePath="Id"/>
+            </StackPanel>
+
+            <TextBlock x:Name="ErrorText"
+                       Grid.Row="7"
+                       Foreground="{StaticResource ErrorBrush}"
+                       FontSize="13"
+                       Margin="0,0,0,16"
+                       TextWrapping="Wrap"/>
+
+            <StackPanel Grid.Row="11"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Center"
+                        Margin="0,1,0,0" Width="210">
+                <Button Content="Створити"
+                        Width="102"
+                        Margin="0,0,10,0"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Click="Create_Click"/>
+                <Button Content="Назад"
+                        Width="100"
+                        Style="{StaticResource SecondaryButtonStyle}"
+                        Click="Cancel_Click"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

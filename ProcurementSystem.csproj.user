@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="WPF\RequestDetailsWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="WPF\Views\Admin\AdminReportsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="WPF\Views\AuditLogView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="WPF\Views\Employee\CreatePurchaseRequestWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="WPF\Views\LoginWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="WPF\Views\Admin\AdminUsersView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="WPF\Views\Admin\ChangePasswordWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="WPF\Views\Admin\CreateUserWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="WPF\Views\Admin\EditUserWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="WPF\Views\Employee\EmployeeRequestsView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="WPF\Views\Manager\ManagerApprovalView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="WPF\Views\Purchaser\PurchaserOrdersView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="WPF\Views\Purchaser\PurchaserMyOrdersView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

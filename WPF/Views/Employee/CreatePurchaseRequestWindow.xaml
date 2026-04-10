@@ -1,0 +1,370 @@
+﻿<Window x:Class="ProcurementSystem.Wpf.Views.CreatePurchaseRequestWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Нова заявка на закупівлю"
+        Height="700"
+        Width="900"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="CanResize"
+        Background="#1E1E1E">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <SolidColorBrush x:Key="BackgroundBrush" Color="#1E1E1E"/>
+            <SolidColorBrush x:Key="SurfaceBrush" Color="#2D2D30"/>
+            <SolidColorBrush x:Key="BorderBrush" Color="#3F3F46"/>
+            <SolidColorBrush x:Key="AccentBrush" Color="#0E7490"/>
+            <SolidColorBrush x:Key="AccentHoverBrush" Color="#0891B2"/>
+            <SolidColorBrush x:Key="TextPrimaryBrush" Color="#E4E4E7"/>
+            <SolidColorBrush x:Key="TextSecondaryBrush" Color="#A1A1AA"/>
+            <SolidColorBrush x:Key="InputBrush" Color="#1A1A1A"/>
+            <SolidColorBrush x:Key="SuccessBrush" Color="#10B981"/>
+            <SolidColorBrush x:Key="SuccessHoverBrush" Color="#059669"/>
+            <SolidColorBrush x:Key="CancelBrush" Color="#3F3F46"/>
+            <SolidColorBrush x:Key="CancelHoverBrush" Color="#52525B"/>
+            <SolidColorBrush x:Key="GridHeaderBrush" Color="#3F3F46"/>
+            <SolidColorBrush x:Key="GridRowBrush" Color="#2D2D30"/>
+            <SolidColorBrush x:Key="GridRowAlternateBrush" Color="#27272A"/>
+            <SolidColorBrush x:Key="GridRowHoverBrush" Color="#3F3F46"/>
+            <SolidColorBrush x:Key="GridRowSelectedBrush" Color="#0E7490"/>
+
+            <Style x:Key="LabelStyle" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="{StaticResource TextSecondaryBrush}"/>
+                <Setter Property="FontSize" Value="13"/>
+                <Setter Property="FontWeight" Value="Medium"/>
+                <Setter Property="Margin" Value="0,0,0,6"/>
+            </Style>
+
+            <Style x:Key="InputBorderStyle" TargetType="Border">
+                <Setter Property="Background" Value="{StaticResource InputBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="CornerRadius" Value="6"/>
+            </Style>
+
+            <Style x:Key="InputTextBoxStyle" TargetType="TextBox">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Padding" Value="12"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="CaretBrush" Value="{StaticResource AccentBrush}"/>
+            </Style>
+
+            <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+                <Setter Property="Background" Value="{StaticResource AccentBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Padding" Value="20,10"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="FontWeight" Value="Medium"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}"
+                                    CornerRadius="6"
+                                    Padding="{TemplateBinding Padding}">
+                                <ContentPresenter HorizontalAlignment="Center" 
+                                                  VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="{StaticResource AccentHoverBrush}"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="SuccessButtonStyle" TargetType="Button">
+                <Setter Property="Background" Value="{StaticResource SuccessBrush}"/>
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Padding" Value="24,12"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="FontWeight" Value="SemiBold"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}"
+                                    CornerRadius="6"
+                                    Padding="{TemplateBinding Padding}">
+                                <ContentPresenter HorizontalAlignment="Center" 
+                                                  VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="{StaticResource SuccessHoverBrush}"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="SecondaryButtonStyle" TargetType="Button">
+                <Setter Property="Background" Value="{StaticResource CancelBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Padding" Value="24,12"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="FontWeight" Value="Medium"/>
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}"
+                                    CornerRadius="6"
+                                    Padding="{TemplateBinding Padding}">
+                                <ContentPresenter HorizontalAlignment="Center" 
+                                                  VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="{StaticResource CancelHoverBrush}"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style TargetType="DataGrid">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="GridLinesVisibility" Value="None"/>
+                <Setter Property="HeadersVisibility" Value="Column"/>
+                <Setter Property="RowBackground" Value="{StaticResource GridRowBrush}"/>
+                <Setter Property="AlternatingRowBackground" Value="{StaticResource GridRowAlternateBrush}"/>
+                <Setter Property="SelectionMode" Value="Single"/>
+                <Setter Property="SelectionUnit" Value="FullRow"/>
+                <Setter Property="CanUserAddRows" Value="False"/>
+                <Setter Property="CanUserDeleteRows" Value="False"/>
+                <Setter Property="CanUserResizeRows" Value="False"/>
+                <Setter Property="FontSize" Value="13"/>
+                <Setter Property="RowHeight" Value="40"/>
+            </Style>
+
+            <Style TargetType="DataGridColumnHeader">
+                <Setter Property="Background" Value="{StaticResource GridHeaderBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+                <Setter Property="FontWeight" Value="SemiBold"/>
+                <Setter Property="FontSize" Value="13"/>
+                <Setter Property="Padding" Value="12,10"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            </Style>
+
+            <Style TargetType="DataGridCell">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Padding" Value="12,0"/>
+                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="DataGridCell">
+                            <Border Background="{TemplateBinding Background}"
+                                    Padding="{TemplateBinding Padding}">
+                                <ContentPresenter VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsSelected" Value="True">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style TargetType="DataGridRow">
+                <Setter Property="Background" Value="Transparent"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="{StaticResource GridRowHoverBrush}"/>
+                    </Trigger>
+                    <Trigger Property="IsSelected" Value="True">
+                        <Setter Property="Background" Value="{StaticResource GridRowSelectedBrush}"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style TargetType="GroupBox">
+                <Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+                <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+                <Setter Property="BorderThickness" Value="1"/>
+                <Setter Property="Padding" Value="12"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="GroupBox">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Border Grid.Row="0"
+                                        Background="{StaticResource GridHeaderBrush}"
+                                        BorderBrush="{StaticResource BorderBrush}"
+                                        BorderThickness="1,1,1,0"
+                                        CornerRadius="6,6,0,0"
+                                        Padding="12,8">
+                                    <ContentPresenter ContentSource="Header"
+                                                      TextBlock.Foreground="{StaticResource TextPrimaryBrush}"
+                                                      TextBlock.FontWeight="SemiBold"
+                                                      TextBlock.FontSize="14"/>
+                                </Border>
+                                <Border Grid.Row="1"
+                                        Background="{StaticResource SurfaceBrush}"
+                                        BorderBrush="{StaticResource BorderBrush}"
+                                        BorderThickness="1,0,1,1"
+                                        CornerRadius="0,0,6,6"
+                                        Padding="{TemplateBinding Padding}">
+                                    <ContentPresenter/>
+                                </Border>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Border Background="{StaticResource SurfaceBrush}"
+            BorderBrush="{StaticResource BorderBrush}"
+            BorderThickness="1"
+            CornerRadius="10"
+            Margin="16">
+        <Grid Margin="24">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Нова заявка на закупівлю"
+                       FontSize="24"
+                       FontWeight="SemiBold"
+                       Foreground="{StaticResource TextPrimaryBrush}"
+                       Margin="0,0,0,20"
+                       Grid.Row="0"/>
+
+            <StackPanel Grid.Row="1" Margin="0,0,0,20">
+                <TextBlock Text="Коментар до заявки" Style="{StaticResource LabelStyle}"/>
+                <Border Style="{StaticResource InputBorderStyle}">
+                    <TextBox x:Name="CommentBox"
+                             Style="{StaticResource InputTextBoxStyle}"
+                             AcceptsReturn="True"
+                             TextWrapping="Wrap"
+                             Height="80"
+                             VerticalScrollBarVisibility="Auto"/>
+                </Border>
+            </StackPanel>
+
+            <GroupBox Grid.Row="2" Header="➕ Додати позицію товару" Margin="0,0,0,16">
+                <Grid Margin="4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="140"/>
+                        <ColumnDefinition Width="140"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Row="0" Grid.Column="0" Margin="0,0,12,0">
+                        <TextBlock Text="Найменування" Style="{StaticResource LabelStyle}"/>
+                        <Border Style="{StaticResource InputBorderStyle}" Height="40">
+                            <TextBox x:Name="ItemNameBox"
+                                     Style="{StaticResource InputTextBoxStyle}"
+                                     VerticalContentAlignment="Center"
+                                     RenderTransformOrigin="0.501,0.66" Margin="0,-7,0,-8"/>
+                        </Border>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="0" Grid.Column="1" Margin="0,0,12,0">
+                        <TextBlock Text="Кількість" Style="{StaticResource LabelStyle}"/>
+                        <Border Style="{StaticResource InputBorderStyle}" Height="40">
+                            <TextBox x:Name="QuantityBox"
+                                     Style="{StaticResource InputTextBoxStyle}"
+                                     VerticalContentAlignment="Center"
+                                     Text="1"
+                                     PreviewTextInput="PreviewTextInput_NumbersOnly" Margin="0,-7,0,-10"/>
+                        </Border>
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="0" Grid.Column="2" Margin="0,0,12,0">
+                        <TextBlock Text="Ціна (грн)" Style="{StaticResource LabelStyle}"/>
+                        <Border Style="{StaticResource InputBorderStyle}" Height="40">
+                            <TextBox x:Name="PriceBox"
+                                     Style="{StaticResource InputTextBoxStyle}"
+                                     VerticalContentAlignment="Center"
+                                     Text="0.00"
+                                     PreviewTextInput="PreviewTextInput_NumbersDecimal" RenderTransformOrigin="0.499,0.231" Margin="0,-4,0,-7"/>
+                        </Border>
+                    </StackPanel>
+
+                    <Button Grid.Row="0" Grid.Column="3"
+                            Content="➕ Додати"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Click="AddItemButton_Click"
+                            Height="40"
+                            Margin="0,26,0,0"
+                            Padding="24,10"/>
+                </Grid>
+            </GroupBox>
+
+            <GroupBox Grid.Row="3" Header="📋 Позиції в заявці (видалити подвійним кліком)" Margin="0,0,0,16">
+                <DataGrid x:Name="ItemsGrid"
+                          AutoGenerateColumns="False"
+                          IsReadOnly="True"
+                          MouseDoubleClick="ItemsGrid_MouseDoubleClick"
+                          Margin="4">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Найменування" Binding="{Binding ItemName}" Width="*"/>
+                        <DataGridTextColumn Header="Кількість" Binding="{Binding Quantity}" Width="120"/>
+                        <DataGridTextColumn Header="Ціна" Binding="{Binding EstimatedPrice, StringFormat=C2}" Width="140"/>
+                        <DataGridTextColumn Header="Разом" Binding="{Binding Total, StringFormat=C2}" Width="140"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+
+            <Grid Grid.Row="4" Margin="0,8,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock x:Name="TotalLabel"
+                           Text="Разом: 0.00 грн"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           FontSize="18"
+                           FontWeight="Bold"
+                           Foreground="{StaticResource SuccessBrush}"/>
+
+                <StackPanel Grid.Column="1"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Right">
+                    <Button x:Name="SubmitButton"
+                            Content="✅ Створити заявку"
+                            Style="{StaticResource SuccessButtonStyle}"
+                            Click="Submit_Click"
+                            Margin="0,0,12,0"/>
+                    <Button Content="❌ Скасувати"
+                            Style="{StaticResource SecondaryButtonStyle}"
+                            IsCancel="True"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
